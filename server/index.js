@@ -16,11 +16,10 @@ app.use("/", express.static("./client/build"));
 // Netlify lambda routes
 // /.netlify/functions/index/:routes
 
-const spare = require("../spare");
 app.get("/news/:section", jsonParser, (req, res) => {
     const { section } = req.params;
     console.log(`Request received for '${req.url}'`);
-    fetch(`${nyTyimesPopularUrl}/${section}.json?api-key=${process.env.API_KEY || spare.API_KEY}`)
+    fetch(`${nyTyimesPopularUrl}/${section}.json?api-key=${process.env.API_KEY || ""}`)
         .then((response) => response.json())
         .then((data) => {
             res.status(200).json(data);
