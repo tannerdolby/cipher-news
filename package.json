@@ -7,7 +7,7 @@
     "dev": "nodemon server/index.js",
     "lambda:build": "netlify-lambda build ./server",
     "lambda:serve": "netlify-lambda serve ./server",
-    "build": "cd ./client && npm install && npm run build && cd ../ && npm run lambda:build"
+    "build": "cd ./client && npm install && npm run build && cd ../functions && npm install && cd ../ && npm run lambda:build"
   },
   "keywords": [
     "nodejs",
