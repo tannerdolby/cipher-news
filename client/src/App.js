@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Clock from './Clock';
 import { SectionNames, NewsList, FooterSectionNames } from './News';
 
 // Use some stateless functional components 
