@@ -1,7 +1,6 @@
 const fetch = require("node-fetch");
 const API_ENDPOINT = "https://api.nytimes.com/svc/topstories/v2";
-const spare = require("../spare");
-const API_KEY = process.env.API_KEY || spare.API_KEY;
+const API_KEY = process.env.API_KEY || "";
 
 exports.handler = async (event, context) => {
     // get the section parameter from lambda endpoint
