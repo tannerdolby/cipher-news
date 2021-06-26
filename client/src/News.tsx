@@ -273,6 +273,8 @@ const TopMiddle = (props: TopMiddleProps) => {
             time: !articles ? new Date().toLocaleDateString() : new Date(articles[index].created_date).toLocaleTimeString(),
             url: !articles ? "" : articles[index].url
         });
+        // come back and fix this xD
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props, index]);
     
     function prev(): void {
@@ -293,7 +295,7 @@ const TopMiddle = (props: TopMiddleProps) => {
     }
 
     return (
-        <div className="top-middle">
+        <div className="top-middle" data-status={status}>
             <a href={data.url}><Image articleTitle={data.title} data={props.data} /></a>
             <div className="row">
                 <strong>TRENDING</strong>
@@ -494,28 +496,6 @@ const Subsections = ((props: { data: ApiResponse }) => {
     )
 });
 
-// Get three sections for home page
-
-const Science = () => {
-    const [newsData, setState] = useState(null);
-
-    useEffect(() => {
-        fetch('/news/science')
-            .then((res) => res.json())
-            .then((newsData) => {
-                setState(newsData)
-            })
-            .catch(err => console.error(err));
-    }, []);
-
-    return (
-        <div>
-            <h1>Write a post about fetching from an API with useState and useEffect</h1>
-        </div>
-    )
-}
-
-
 export const NewsList = () => {
     const [query, setQuery] = useState("");
     const url: string = query && `/news?section=${query}`;
@@ -527,6 +507,10 @@ export const NewsList = () => {
         error: Error | string 
     } = useFetch(url);
 
+    if (error) {
+        console.error(error);
+    }
+
     const section: string = window.location.pathname.slice(6);
     if (!query) {
         const q = section !== "" ? section : "arts";
@@ -536,7 +520,7 @@ export const NewsList = () => {
     const articles = data;
 
     return (
-        <main id="main-content">
+        <main id="main-content" data-status={status}>
             <HomeGrid data={!articles ? 'Loading' : articles } />
             <MainGrid data={!articles ? 'Loading' : articles } />
             <Subsections data={!articles ? 'Loading' : articles } />

@@ -5,14 +5,14 @@ import { SectionNames, NewsList, FooterSectionNames } from './News';
 
 // Use some stateless functional components 
 
-const PopOver = () => {
-  return (
-    <div className="pop-over">
-      <p>Take a moment to fill out the <a href="/">reading habits survey</a> ✏️ Want to read now? <a href="/">Get Started</a> ✨</p>
-      <button className="po-exit">x</button>
-    </div>
-  )
-}
+// const PopOver = () => {
+//   return (
+//     <div className="pop-over">
+//       <p>Take a moment to fill out the <a href="/">reading habits survey</a> ✏️ Want to read now? <a href="/">Get Started</a> ✨</p>
+//       <button className="po-exit">x</button>
+//     </div>
+//   )
+// }
 
 const SearchIcon = () => {
   return (
@@ -55,14 +55,14 @@ const Hero = () => {
   )
 }
 
-const Time = () => {
-  return (
-    <div className="time">
-      <span>&#128337;</span>
-      <Clock />
-    </div>
-  )
-}
+// const Time = () => {
+//   return (
+//     <div className="time">
+//       <span>&#128337;</span>
+//       <Clock />
+//     </div>
+//   )
+// }
 
 const SocialLinks = () => {
   const twitterIcon = <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="18px" y="18px"
