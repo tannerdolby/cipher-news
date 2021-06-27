@@ -9,8 +9,41 @@
     align-items: center;
 }
 
-.show {
+body.overlay::before {
+    position: fixed;
+    background: #000;
+    height: 90vh;
+    z-index: 999;
+}
+
+.main-nav .nav-links.show {
     display: block;
+    position: absolute;
+    padding: .5rem;
+    margin: 0 1rem;
+    left: 0;
+    height: auto;
+    bottom: -171px;
+    background: #111;
+    background: inherit;
+    background: #fafafa;
+    width: -webkit-fill-available;
+    border: 3px solid #000;
+    color: #fff;
+    color: #111;
+    z-index: 99;
+}
+
+.nav-links.show li a {
+    display: block;
+    margin: 0;
+    padding: 4px 5px;
+    text-decoration: none;
+}
+
+.nav-links.show li a:hover {
+    background: #eee;
+    cursor: pointer;
 }
 
 .row {
@@ -66,6 +99,7 @@
     align-items: center;
     justify-content: center;
     padding: 0 1rem;
+    position: relative;
 }
 
 .main-nav ul {
@@ -78,13 +112,13 @@
 }
 
 .main-nav ul li {
-    margin-right: .25rem;
+    margin-right: 1rem;
 }
 
-.main-nav a {
+.main-nav ul li a {
     color: inherit;
     text-decoration: none;
-    padding: .75rem 1rem;
+    padding: .75rem .5rem;
     border-radius: 5px;
 }
 
@@ -110,11 +144,13 @@
 .main-nav .nav-signup {
     border: 1px solid #222;
     padding: .55rem .9rem;
+    text-decoration: none;
     font-weight: 600;
     background: inherit;
     background: #222;
     color: #fff;
     border-radius: 3px;
+    white-space: pre;
 }
 
 .main-nav .nav-signup:hover {
@@ -526,6 +562,32 @@ input {
     background: #191919;
 }
 
+.hamburger-menu {
+    display: none;
+    position: relative;
+    background: #eee;
+    border: none;
+    border-radius: 2px;
+    background: inherit;
+    padding: 10px;
+}
+
+.hamburger-menu:hover {
+    cursor: pointer;
+}
+
+.hamburger-menu .line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #000;
+    border-radius: 3px;
+}
+
+.hamburger-menu .line:nth-child(2) {
+    margin: 4px 0;
+}
+
 .top-right .ad {
     background: #D6EAF8;
     padding: 1rem 1rem 1.5rem 1rem;
@@ -762,7 +824,7 @@ input {
 footer {
     margin: 5rem auto 0 auto;
     background: #eee;
-    padding: 3rem 1.5rem 1rem 1.5rem;
+    padding: 3rem 1rem 1rem 1rem;
 }
 
 footer .footer-row {
@@ -1165,6 +1227,16 @@ footer .social-link svg {
     }
 }
 
+@media screen and (min-width: 600px) {
+    .main-nav .nav-links.show {
+        display: flex;
+        border: none;
+        position: static;
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .footer-content {
         flex-wrap: wrap;
@@ -1193,6 +1265,17 @@ footer .social-link svg {
         border-top: 2px solid lightgray;
         border-bottom: 2px solid lightgray;
     }
+    .hamburger-menu {
+        display: block;
+    }
+    .main-nav .nav-links {
+        display: none;
+    }
+    .main-nav {
+        justify-content: space-between;
+        margin: .75rem auto;
+    }
+
 }
 
 @media screen and (max-width: 575px) {
