@@ -13,37 +13,86 @@ import { SectionNames, NewsList, FooterSectionNames } from './News';
 //   )
 // }
 
-const SearchIcon = () => {
-  return (
-    <svg version="1.1" id="search-icon" xmlns="http://www.w3.org/2000/svg" x="20" y="20"
-      viewBox="0 0 512.005 512.005" xmlSpace="preserve">
-    <g>
-      <g>
-        <path d="M505.749,475.587l-145.6-145.6c28.203-34.837,45.184-79.104,45.184-127.317c0-111.744-90.923-202.667-202.667-202.667
-          S0,90.925,0,202.669s90.923,202.667,202.667,202.667c48.213,0,92.48-16.981,127.317-45.184l145.6,145.6
-          c4.16,4.16,9.621,6.251,15.083,6.251s10.923-2.091,15.083-6.251C514.091,497.411,514.091,483.928,505.749,475.587z
-          M202.667,362.669c-88.235,0-160-71.765-160-160s71.765-160,160-160s160,71.765,160,160S290.901,362.669,202.667,362.669z"/>
-      </g>
-    </g>
-    </svg>
-  )
-}
+// const SearchIcon = () => {
+//   return (
+//     <svg version="1.1" id="search-icon" xmlns="http://www.w3.org/2000/svg" x="20" y="20"
+//       viewBox="0 0 512.005 512.005" xmlSpace="preserve">
+//     <g>
+//       <g>
+//         <path d="M505.749,475.587l-145.6-145.6c28.203-34.837,45.184-79.104,45.184-127.317c0-111.744-90.923-202.667-202.667-202.667
+//           S0,90.925,0,202.669s90.923,202.667,202.667,202.667c48.213,0,92.48-16.981,127.317-45.184l145.6,145.6
+//           c4.16,4.16,9.621,6.251,15.083,6.251s10.923-2.091,15.083-6.251C514.091,497.411,514.091,483.928,505.749,475.587z
+//           M202.667,362.669c-88.235,0-160-71.765-160-160s71.765-160,160-160s160,71.765,160,160S290.901,362.669,202.667,362.669z"/>
+//       </g>
+//     </g>
+//     </svg>
+//   )
+// }
 
-const NavBar = (props) => {
-  return (
-    <nav className="main-nav" id="main-navigation">
-      <ul>
-        <li key="home"><a href="/">Home</a></li>
-        <li key="subections"><a href="#subsections">Subsections</a></li>
-        <li key="code"><a href="https://github.com/tannerdolby/cipher-news">GitHub</a></li>
-      </ul>
-      <div className="nav-right">
-        <SearchIcon />
-        {/* <input className="top-nav-search" type="text" name="search" placeholder="Search..." /> */}
-      </div>
-      <a href="#main-subscribe" className="nav-signup">Sign Up</a>
-    </nav>
-  )
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isToggled: false,
+      isLinkClicked: false,
+      isViewportSmall: false,
+      isViewportLarge: false
+    }
+    this.toggleNav = this.toggleNav.bind(this);
+    this.handleLinkClick = this.handleLinkClick.bind(this);
+    this.checkViewportWidth = this.checkViewportWidth.bind(this);
+  }
+
+  toggleNav() {
+    if (this.state.isLinkClicked && !this.state.isToggled) {
+      document.querySelector(".nav-links").classList.remove("hidden");
+      document.querySelector(".nav-links").classList.toggle("show");
+    } else {
+      this.setState(prevState => ({
+        isToggled: !prevState.isToggled
+      }));
+    }
+    this.checkViewportWidth();
+  }
+
+  handleLinkClick() {
+    this.setState(prevState => ({
+        isLinkClicked: !prevState.isLinkClicked,
+        isToggled: !prevState.isToggled
+    }));
+  }
+
+  checkViewportWidth() {
+    let currWidth = window.innerWidth;
+    if (currWidth < 600) {
+      this.setState(prevState => ({
+        isViewportSmall: !prevState.isViewportSmall
+      }));
+    } else {
+      this.setState(prevState => ({
+        isViewportLarge: !prevState.isViewportLarge
+      }));
+    }
+  }
+
+  render() {
+    return (
+      <nav className="main-nav" id="main-navigation">
+        <button className="hamburger-menu" onClick={this.toggleNav}>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+        </button>
+        <ul className={`nav-links ${this.state.isToggled && this.state.isViewportSmall ? 'show' : 'hidden'}`}>
+          <li key="home"><a onClick={this.state.isToggled ? this.handleLinkClick : this.checkViewportWidth} href="/">Home</a></li>
+          <li key="subections"><a onClick={this.state.isToggled ? this.handleLinkClick : this.checkViewportWidth} href="#subsections">Subsections</a></li>
+          <li key="contact"><a onClick={this.state.isToggled ? this.handleLinkClick : this.checkViewportWidth} href="#contact-info">Contact</a></li>
+          <li key="code"><a href="https://github.com/tannerdolby/cipher-news">GitHub</a></li>
+        </ul>
+        <a href="#main-subscribe" className="nav-signup">Sign Up</a>
+      </nav>
+    )
+  }
 }
 
 const Hero = () => {
@@ -53,15 +102,6 @@ const Hero = () => {
     </header>
   )
 }
-
-// const Time = () => {
-//   return (
-//     <div className="time">
-//       <span>&#128337;</span>
-//       <Clock />
-//     </div>
-//   )
-// }
 
 const SocialLinks = () => {
   const twitterIcon = <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="18px" y="18px"
@@ -127,7 +167,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-row">
-        <div className="footer-about">
+        <div className="footer-about" id="contact-info">
           <div className="footer-logo">
             <div>
               CNG
