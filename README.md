@@ -17,5 +17,8 @@ Feel free to contribute to this project by suggesting a new feature or modificat
 ## Notes
 The UI is built with React, using a custom hook to fetch data from the [NY Times Top Stories API](https://developer.nytimes.com/docs/top-stories-product/1/overview). The custom hook uses [memoization](https://en.wikipedia.org/wiki/Memoization) to store the response of API calls in a cache and return the cached result when the same API request occurs again later. This greatly improves performance by reducing the number of costly API calls. If an API call is made to the lambda endpoint `/.netlify/functions/news?section=movies`, we will first check the cache to see if that data is already stored, if it isn't make the request and store response in cache, if it is already stored, simply use the cached result to avoid making another API call.
 
+## Design
+Original design by Vishnu Prasad on dribbble - https://dribbble.com/shots/10827673-Retro-news-web-app
+
 ## Maintainer
 [@tannerdolby](https://github.com/tannerdolby)
