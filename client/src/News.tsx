@@ -331,7 +331,7 @@ class SubscribeForm extends React.Component<{}, { value: string }> {
     }
 
     handleSubmit(event: any) {
-        alert(`The email '${this.state.value}' is now subscribed! 🎉 \n\nDon't worry, your not actually subscribed to anything, this is just for show :)`);
+        alert(`${this.state.value} is now subscribed! 🎉 \n\nDon't worry, your not actually subscribed to anything, this is just for show :)`);
         event.preventDefault();
         // reset form and state
         event.target.reset();
