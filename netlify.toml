@@ -2,3 +2,9 @@
   command = "npm run build"
   functions = "functions"
   publish = "./client/build"
+
+
+  [[redirects]]
+    from = "https://ciphernews.netlify.app/*"
+    to = "https://ciphernews.netlify.app"
+    status = 200
