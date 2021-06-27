@@ -498,7 +498,7 @@ const Subsections = ((props: { data: ApiResponse }) => {
 
 export const NewsList = () => {
     const [query, setQuery] = useState("");
-    const url: string = query && `/news?section=${query}`;
+    const url: string = query && `/.netlify/functions/news?section=${query}`;
 
     // Use custom hook for API fetch requests
     const { status, data, error }: { 
