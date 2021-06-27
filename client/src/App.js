@@ -166,6 +166,7 @@ const SocialLinks = () => {
 const Footer = () => {
   return (
     <footer>
+      <div class="footer-wrap">
       <div className="footer-row">
         <div className="footer-about" id="contact-info">
           <div className="footer-logo">
@@ -185,6 +186,7 @@ const Footer = () => {
       <div className="footer-fold">
         <p>Built by Tanner Dolby. News provided by the <a href="https://developer.nytimes.com/docs/top-stories-product/1/overview">New York Times</a></p>
         <a href="#main-navigation">Back to top</a>
+      </div>
       </div>
     </footer>
   )
