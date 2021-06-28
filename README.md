@@ -7,7 +7,7 @@ A news application with content provided by the NY Times Top Stories API. Built 
 3. Start React client: `cd ./client` and then `npm run start`
 4. Navigate to `http://localhost:3000` for UI and `http://localhost:9000/.netlify/functions/news` to view the lambda function endpoint.
 
-_Optionally, you can run the node app with the React client locally and hit those endpoints in `./server/index.js` with `proxy` changed to `http://localhost:8000` in `package.json` of React project, but in production the lambda endpoints in `./functions` must be used._
+Optionally, you can run the node app with the React client locally and hit those endpoints in `./server/index.js` with `proxy` changed to `http://localhost:8000` in `package.json` of React project, but in production the lambda endpoints in `./functions` must be used.
 
 ## Contributing
 Feel free to contribute to this project by suggesting a new feature or modification.
